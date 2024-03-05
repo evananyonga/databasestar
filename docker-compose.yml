@@ -4,14 +4,14 @@ services:
   database:
     image: mysql
     container_name: bookdata
-    command: --init-file /data/application/init.sql
+    # command: --init-file /data/application/init.sql
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3331:3306"
     volumes:
-      - ./init.sql:/data/application/init.sql
+      - ./sample_databases/sample_db_olympics/mysql:/docker-entrypoint-initdb.d
       - mysqldata:/var/lib/mysql
 
 volumes:
